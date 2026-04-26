@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1777237831263,
+      "tag": "0000_pink_jack_murdock",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1777237837394,
+      "tag": "0001_create-audit-functions",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1777237837774,
+      "tag": "0002_create-audit-triggers",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1777237838150,
+      "tag": "0003_seed-core-reference-data",
+      "breakpoints": true
+    }
+  ]
+}
