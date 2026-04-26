@@ -1,0 +1,24 @@
+services:
+  api:
+    build:
+      context: ..
+      dockerfile: api/Dockerfile
+    image: tienda-mistrapitos-api:prod
+    environment:
+      NODE_ENV: production
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  dashboard:
+    build:
+      context: ..
+      dockerfile: dashboard/Dockerfile
+    image: tienda-mistrapitos-dashboard:prod
+    environment:
+      NODE_ENV: production
+    ports:
+      - "4173:4173"
+    restart: unless-stopped
+    depends_on:
+      - api
