@@ -21,6 +21,7 @@ services:
     working_dir: /workspace
     environment:
       CI: "true"
+      DATABASE_URL: postgresql://mistrapitos:mistrapitos@postgres:5432/mistrapitos
     command: >
       sh -c "corepack enable &&
       pnpm install --frozen-lockfile &&
