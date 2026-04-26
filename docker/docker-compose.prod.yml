@@ -1,4 +1,22 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: mistrapitos
+      POSTGRES_USER: mistrapitos
+      POSTGRES_PASSWORD: mistrapitos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data-prod:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mistrapitos -d mistrapitos"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
   api:
     build:
       context: ..
@@ -9,6 +27,9 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   dashboard:
     build:
@@ -22,3 +43,6 @@ services:
     restart: unless-stopped
     depends_on:
       - api
+
+volumes:
+  postgres-data-prod:
