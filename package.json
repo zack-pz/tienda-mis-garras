@@ -1,0 +1,14 @@
+{
+  "name": "tienda-mistrapitos",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.18.3",
+  "scripts": {
+    "nx": "nx",
+    "graph": "nx graph",
+    "affected": "nx affected"
+  },
+  "devDependencies": {
+    "nx": "^21.6.4"
+  }
+}

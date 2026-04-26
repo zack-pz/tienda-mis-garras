@@ -1,0 +1,296 @@
+{
+  "4719537637271611740": {
+    "root": "api",
+    "name": "api",
+    "targets": {
+      "build": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "build"
+        },
+        "metadata": {
+          "scriptContent": "nest build",
+          "runCommand": "pnpm run build"
+        }
+      },
+      "format": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "format"
+        },
+        "metadata": {
+          "scriptContent": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+          "runCommand": "pnpm run format"
+        }
+      },
+      "start": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "start"
+        },
+        "metadata": {
+          "scriptContent": "nest start",
+          "runCommand": "pnpm run start"
+        }
+      },
+      "start:dev": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "start:dev"
+        },
+        "metadata": {
+          "scriptContent": "nest start --watch",
+          "runCommand": "pnpm run start:dev"
+        }
+      },
+      "start:debug": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "start:debug"
+        },
+        "metadata": {
+          "scriptContent": "nest start --debug --watch",
+          "runCommand": "pnpm run start:debug"
+        }
+      },
+      "start:prod": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "start:prod"
+        },
+        "metadata": {
+          "scriptContent": "node dist/main",
+          "runCommand": "pnpm run start:prod"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "lint"
+        },
+        "metadata": {
+          "scriptContent": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+          "runCommand": "pnpm run lint"
+        }
+      },
+      "test": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test"
+        },
+        "metadata": {
+          "scriptContent": "jest",
+          "runCommand": "pnpm run test"
+        }
+      },
+      "test:watch": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test:watch"
+        },
+        "metadata": {
+          "scriptContent": "jest --watch",
+          "runCommand": "pnpm run test:watch"
+        }
+      },
+      "test:cov": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test:cov"
+        },
+        "metadata": {
+          "scriptContent": "jest --coverage",
+          "runCommand": "pnpm run test:cov"
+        }
+      },
+      "test:debug": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test:debug"
+        },
+        "metadata": {
+          "scriptContent": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+          "runCommand": "pnpm run test:debug"
+        }
+      },
+      "test:e2e": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test:e2e"
+        },
+        "metadata": {
+          "scriptContent": "jest --config ./test/jest-e2e.json",
+          "runCommand": "pnpm run test:e2e"
+        }
+      }
+    },
+    "tags": [
+      "npm:private"
+    ],
+    "metadata": {
+      "targetGroups": {
+        "NPM Scripts": [
+          "build",
+          "format",
+          "start",
+          "start:dev",
+          "start:debug",
+          "start:prod",
+          "lint",
+          "test",
+          "test:watch",
+          "test:cov",
+          "test:debug",
+          "test:e2e"
+        ]
+      },
+      "description": "",
+      "js": {
+        "packageName": "api",
+        "packageVersion": "0.0.1",
+        "isInPackageManagerWorkspaces": true
+      }
+    }
+  },
+  "3198825935423248298": {
+    "root": "dashboard",
+    "name": "dashboard",
+    "targets": {
+      "dev": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "dev"
+        },
+        "metadata": {
+          "scriptContent": "vite dev",
+          "runCommand": "pnpm run dev"
+        }
+      },
+      "build": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "build"
+        },
+        "metadata": {
+          "scriptContent": "vite build",
+          "runCommand": "pnpm run build"
+        }
+      },
+      "preview": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "preview"
+        },
+        "metadata": {
+          "scriptContent": "vite preview",
+          "runCommand": "pnpm run preview"
+        }
+      },
+      "prepare": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "prepare"
+        },
+        "metadata": {
+          "scriptContent": "playwright install && svelte-kit sync || echo ''",
+          "runCommand": "pnpm run prepare"
+        }
+      },
+      "check": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "check"
+        },
+        "metadata": {
+          "scriptContent": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+          "runCommand": "pnpm run check"
+        }
+      },
+      "check:watch": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "check:watch"
+        },
+        "metadata": {
+          "scriptContent": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+          "runCommand": "pnpm run check:watch"
+        }
+      },
+      "lint": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "lint"
+        },
+        "metadata": {
+          "scriptContent": "prettier --check . && eslint .",
+          "runCommand": "pnpm run lint"
+        }
+      },
+      "format": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "format"
+        },
+        "metadata": {
+          "scriptContent": "prettier --write .",
+          "runCommand": "pnpm run format"
+        }
+      },
+      "test:unit": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test:unit"
+        },
+        "metadata": {
+          "scriptContent": "vitest",
+          "runCommand": "pnpm run test:unit"
+        }
+      },
+      "test": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test"
+        },
+        "metadata": {
+          "scriptContent": "npm run test:unit -- --run && npm run test:e2e",
+          "runCommand": "pnpm run test"
+        }
+      },
+      "test:e2e": {
+        "executor": "nx:run-script",
+        "options": {
+          "script": "test:e2e"
+        },
+        "metadata": {
+          "scriptContent": "playwright test",
+          "runCommand": "pnpm run test:e2e"
+        }
+      }
+    },
+    "tags": [
+      "npm:private"
+    ],
+    "metadata": {
+      "targetGroups": {
+        "NPM Scripts": [
+          "dev",
+          "build",
+          "preview",
+          "prepare",
+          "check",
+          "check:watch",
+          "lint",
+          "format",
+          "test:unit",
+          "test",
+          "test:e2e"
+        ]
+      },
+      "js": {
+        "packageName": "dashboard",
+        "packageVersion": "0.0.1",
+        "isInPackageManagerWorkspaces": true
+      }
+    }
+  }
+}
