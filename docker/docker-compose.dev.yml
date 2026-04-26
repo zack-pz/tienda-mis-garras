@@ -6,13 +6,19 @@ services:
       CI: "true"
     command: >
       sh -c "corepack enable &&
-      pnpm install --frozen-lockfile --ignore-scripts &&
+      pnpm install --frozen-lockfile &&
       pnpm --filter api start:dev"
     ports:
       - "3000:3000"
     volumes:
       - ..:/workspace
       - pnpm-store:/root/.local/share/pnpm/store
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
 
   dashboard:
     image: node:24-alpine
@@ -22,7 +28,7 @@ services:
       PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
     command: >
       sh -c "corepack enable &&
-      pnpm install --frozen-lockfile --ignore-scripts &&
+      pnpm install --frozen-lockfile &&
       pnpm --filter dashboard exec svelte-kit sync &&
       pnpm --filter dashboard dev --host 0.0.0.0 --port 5173"
     ports:
@@ -31,7 +37,8 @@ services:
       - ..:/workspace
       - pnpm-store:/root/.local/share/pnpm/store
     depends_on:
-      - api
+      api:
+        condition: service_healthy
 
 volumes:
   pnpm-store:
