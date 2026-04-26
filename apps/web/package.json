@@ -51,6 +51,7 @@
 		"vitest-browser-svelte": "^2.1.0"
 	},
 	"dependencies": {
+		"@tanstack/svelte-form": "^1.29.1",
 		"@tanstack/svelte-query": "^6.1.24",
 		"zod": "^4.3.6"
 	}

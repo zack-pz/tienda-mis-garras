@@ -29,3 +29,9 @@ You MUST use this tool whenever writing Svelte code before sending it to the use
 
 Generates a Svelte Playground link with the provided code.
 After completing the code, ask the user if they want a playground link. Only call this tool after user confirmation and NEVER if code was written to files in their project.
+
+## Project Skills
+
+| Skill | Description | Location |
+| --- | --- | --- |
+| `web` | Convenciones del frontend `apps/web`: arquitectura modular por features con SvelteKit, `routes` como capa de routing, `shadcn-svelte` + Tailwind, Zod para formularios y TanStack Form en páginas CSR. Trigger: cuando trabajes en páginas, layouts, formularios, componentes o estructura dentro de `apps/web`. | [../../.opencode/skills/web/SKILL.md](../../.opencode/skills/web/SKILL.md) |
