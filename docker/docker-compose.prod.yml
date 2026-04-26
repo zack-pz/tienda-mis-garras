@@ -2,7 +2,7 @@ services:
   api:
     build:
       context: ..
-      dockerfile: api/Dockerfile
+      dockerfile: apps/api/Dockerfile
     image: tienda-mistrapitos-api:prod
     environment:
       NODE_ENV: production
@@ -13,7 +13,7 @@ services:
   dashboard:
     build:
       context: ..
-      dockerfile: dashboard/Dockerfile
+      dockerfile: apps/web/Dockerfile
     image: tienda-mistrapitos-dashboard:prod
     environment:
       NODE_ENV: production
