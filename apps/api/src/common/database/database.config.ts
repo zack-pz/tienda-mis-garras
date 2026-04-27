@@ -1,8 +1,12 @@
 import { config as loadEnv } from 'dotenv';
+import { resolve } from 'node:path';
 import type { PoolConfig } from 'pg';
 import type { DatabaseConfig } from './database.types';
 
-loadEnv({ quiet: true });
+loadEnv({
+  path: resolve(process.cwd(), '.env'),
+  quiet: true,
+});
 
 const DEFAULT_DATABASE_HOST = 'localhost';
 const DEFAULT_DATABASE_PORT = 5432;
