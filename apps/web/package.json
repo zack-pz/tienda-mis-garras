@@ -1,10 +1,11 @@
 {
-	"name": "dashboard",
+	"name": "web",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
+		"serve": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync",

@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "serve": "nest start --watch",
     "build": "nest build",
     "db:generate": "drizzle-kit generate --config=drizzle.config.ts",
     "db:generate:custom": "drizzle-kit generate --config=drizzle.config.ts --custom",
