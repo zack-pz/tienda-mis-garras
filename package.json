@@ -9,7 +9,8 @@
     "affected": "nx affected",
     "docker:dev": "docker compose -f docker/docker-compose.dev.yml up",
     "docker:dev:build": "docker compose -f docker/docker-compose.dev.yml up --build",
-    "docker:prod": "docker compose -f docker/docker-compose.prod.yml up --build -d"
+    "docker:prod": "docker compose -f docker/docker-compose.prod.yml up --build -d",
+    "docker:db": "docker compose -f docker/docker-compose.dev.yml up postgres"
   },
   "devDependencies": {
     "nx": "^21.6.4"

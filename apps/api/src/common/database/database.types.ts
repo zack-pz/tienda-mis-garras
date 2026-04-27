@@ -1,6 +1,6 @@
 import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import type { Pool, PoolConfig } from 'pg';
-import type * as schema from './drizzle/schema';
+import type * as schema from './schemas/schema';
 
 export interface DatabaseConfig {
   url?: string;

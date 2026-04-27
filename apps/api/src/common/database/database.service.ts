@@ -1,7 +1,7 @@
 import { Inject, Injectable, OnModuleDestroy } from '@nestjs/common';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import type { Pool } from 'pg';
-import * as schema from './drizzle/schema';
+import * as schema from './schemas/schema';
 import { DATABASE_CONFIG, DATABASE_POOL_FACTORY } from './database.constants';
 import { buildPoolConfig } from './database.config';
 import type {

@@ -2,5 +2,7 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
-	"material-icon-theme.activeIconPack": "nest"
+	"material-icon-theme.activeIconPack": "nest",
+	"workbench.iconTheme": "material-icon-theme",
+	"material-icon-theme.folders.color": "#495266",
 }
