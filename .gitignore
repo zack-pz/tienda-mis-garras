@@ -80,4 +80,4 @@ vite.config.ts.timestamp-*
 .nx/
 
 # Agent workspace
-
+.atl/

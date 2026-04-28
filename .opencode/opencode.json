@@ -8,7 +8,7 @@
 				"npx",
 				"-y",
 				"@modelcontextprotocol/server-postgres",
-				"{env:DATABASE_URL}"
+				"postgresql://mistrapitos:mistrapitos@localhost:5432/mistrapitos"
 			]
 		}
 	}
