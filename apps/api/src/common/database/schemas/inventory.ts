@@ -22,7 +22,9 @@ export const inventario = pgTable(
     cantidad: integer('cantidad').notNull().default(0),
     stockMinimo: integer('stock_minimo').notNull().default(5),
     ubicacion: varchar('ubicacion', { length: 100 }),
-    fechaActualizacion: timestamp('fecha_actualizacion', { mode: 'date' }).notNull().defaultNow(),
+    fechaActualizacion: timestamp('fecha_actualizacion', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
   },
   (table) => [
     foreignKey({

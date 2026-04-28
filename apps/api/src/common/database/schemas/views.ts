@@ -1,5 +1,13 @@
 import { sql } from 'drizzle-orm';
-import { bigint, date, integer, numeric, pgView, timestamp, varchar } from 'drizzle-orm/pg-core';
+import {
+  bigint,
+  date,
+  integer,
+  numeric,
+  pgView,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core';
 
 export const vwStockBajo = pgView('vw_stock_bajo', {
   idProducto: integer('id_producto').notNull(),
@@ -29,8 +37,16 @@ export const vwStockBajo = pgView('vw_stock_bajo', {
 export const vwVentasDiarias = pgView('vw_ventas_diarias', {
   fecha: date('fecha', { mode: 'string' }).notNull(),
   totalVentas: bigint('total_ventas', { mode: 'number' }).notNull(),
-  ingresoTotal: numeric('ingreso_total', { precision: 12, scale: 2, mode: 'number' }),
-  descuentosTotal: numeric('descuentos_total', { precision: 12, scale: 2, mode: 'number' }),
+  ingresoTotal: numeric('ingreso_total', {
+    precision: 12,
+    scale: 2,
+    mode: 'number',
+  }),
+  descuentosTotal: numeric('descuentos_total', {
+    precision: 12,
+    scale: 2,
+    mode: 'number',
+  }),
 }).as(sql`
   SELECT
     v.fecha_venta::DATE AS fecha,
@@ -46,7 +62,11 @@ export const vwVentasPorVendedor = pgView('vw_ventas_por_vendedor', {
   idUsuario: integer('id_usuario').notNull(),
   vendedor: varchar('vendedor', { length: 201 }).notNull(),
   numVentas: bigint('num_ventas', { mode: 'number' }).notNull(),
-  totalVendido: numeric('total_vendido', { precision: 12, scale: 2, mode: 'number' }),
+  totalVendido: numeric('total_vendido', {
+    precision: 12,
+    scale: 2,
+    mode: 'number',
+  }),
 }).as(sql`
   SELECT
     u.id_usuario,
@@ -66,7 +86,11 @@ export const vwProductosMasVendidos = pgView('vw_productos_mas_vendidos', {
   talla: varchar('talla', { length: 10 }),
   color: varchar('color', { length: 50 }),
   unidadesVendidas: bigint('unidades_vendidas', { mode: 'number' }).notNull(),
-  ingresoGenerado: numeric('ingreso_generado', { precision: 12, scale: 2, mode: 'number' }),
+  ingresoGenerado: numeric('ingreso_generado', {
+    precision: 12,
+    scale: 2,
+    mode: 'number',
+  }),
 }).as(sql`
   SELECT
     p.id_producto,
@@ -88,7 +112,11 @@ export const vwHistorialCliente = pgView('vw_historial_cliente', {
   idCliente: integer('id_cliente').notNull(),
   cliente: varchar('cliente', { length: 201 }).notNull(),
   folio: varchar('folio', { length: 30 }).notNull(),
-  total: numeric('total', { precision: 12, scale: 2, mode: 'number' }).notNull(),
+  total: numeric('total', {
+    precision: 12,
+    scale: 2,
+    mode: 'number',
+  }).notNull(),
   metodoPago: varchar('metodo_pago', { length: 20 }).notNull(),
   fechaVenta: timestamp('fecha_venta', { mode: 'date' }).notNull(),
 }).as(sql`

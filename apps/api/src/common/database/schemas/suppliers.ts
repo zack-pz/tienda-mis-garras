@@ -26,7 +26,9 @@ export const proveedores = pgTable('proveedores', {
   rfc: varchar('rfc', { length: 20 }),
   notas: text('notas'),
   activo: boolean('activo').notNull().default(true),
-  fechaRegistro: timestamp('fecha_registro', { mode: 'date' }).notNull().defaultNow(),
+  fechaRegistro: timestamp('fecha_registro', { mode: 'date' })
+    .notNull()
+    .defaultNow(),
 });
 
 export const proveedoresProductos = pgTable(
@@ -35,7 +37,11 @@ export const proveedoresProductos = pgTable(
     idProveedorProducto: serial('id_proveedor_producto').primaryKey(),
     idProveedor: integer('id_proveedor').notNull(),
     idProducto: integer('id_producto').notNull(),
-    precioProveedor: numeric('precio_proveedor', { precision: 12, scale: 2, mode: 'number' }),
+    precioProveedor: numeric('precio_proveedor', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    }),
     tiempoEntregaDias: integer('tiempo_entrega_dias'),
   },
   (table) => [
@@ -63,9 +69,13 @@ export const ordenesCompra = pgTable(
     idProveedor: integer('id_proveedor').notNull(),
     idUsuario: integer('id_usuario').notNull(),
     estado: estadoOrdenEnum('estado').notNull().default('PENDIENTE'),
-    total: numeric('total', { precision: 12, scale: 2, mode: 'number' }).notNull().default(0),
+    total: numeric('total', { precision: 12, scale: 2, mode: 'number' })
+      .notNull()
+      .default(0),
     observaciones: text('observaciones'),
-    fechaOrden: timestamp('fecha_orden', { mode: 'date' }).notNull().defaultNow(),
+    fechaOrden: timestamp('fecha_orden', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
     fechaRecepcion: timestamp('fecha_recepcion', { mode: 'date' }),
   },
   (table) => [
@@ -89,8 +99,16 @@ export const detalleOrdenesCompra = pgTable(
     idOrden: integer('id_orden').notNull(),
     idProducto: integer('id_producto').notNull(),
     cantidad: integer('cantidad').notNull(),
-    precioUnitario: numeric('precio_unitario', { precision: 12, scale: 2, mode: 'number' }).notNull(),
-    subtotal: numeric('subtotal', { precision: 12, scale: 2, mode: 'number' }).notNull(),
+    precioUnitario: numeric('precio_unitario', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    }).notNull(),
+    subtotal: numeric('subtotal', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    }).notNull(),
   },
   (table) => [
     foreignKey({
@@ -103,6 +121,9 @@ export const detalleOrdenesCompra = pgTable(
       foreignColumns: [productos.idProducto],
       name: 'fk_doc_product',
     }),
-    check('detalle_ordenes_compra_cantidad_positive', sql`${table.cantidad} > 0`),
+    check(
+      'detalle_ordenes_compra_cantidad_positive',
+      sql`${table.cantidad} > 0`,
+    ),
   ],
 );

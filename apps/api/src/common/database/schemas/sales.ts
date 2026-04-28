@@ -24,16 +24,28 @@ export const ventas = pgTable(
     folio: varchar('folio', { length: 30 }).notNull().unique(),
     idCliente: integer('id_cliente'),
     idUsuario: integer('id_usuario').notNull(),
-    subtotal: numeric('subtotal', { precision: 12, scale: 2, mode: 'number' }).notNull().default(0),
-    descuentoTotal: numeric('descuento_total', { precision: 12, scale: 2, mode: 'number' })
+    subtotal: numeric('subtotal', { precision: 12, scale: 2, mode: 'number' })
       .notNull()
       .default(0),
-    impuesto: numeric('impuesto', { precision: 12, scale: 2, mode: 'number' }).notNull().default(0),
-    total: numeric('total', { precision: 12, scale: 2, mode: 'number' }).notNull().default(0),
+    descuentoTotal: numeric('descuento_total', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    })
+      .notNull()
+      .default(0),
+    impuesto: numeric('impuesto', { precision: 12, scale: 2, mode: 'number' })
+      .notNull()
+      .default(0),
+    total: numeric('total', { precision: 12, scale: 2, mode: 'number' })
+      .notNull()
+      .default(0),
     metodoPago: metodoPagoEnum('metodo_pago').notNull(),
     estado: estadoVentaEnum('estado').notNull().default('COMPLETADA'),
     observaciones: text('observaciones'),
-    fechaVenta: timestamp('fecha_venta', { mode: 'date' }).notNull().defaultNow(),
+    fechaVenta: timestamp('fecha_venta', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
   },
   (table) => [
     foreignKey({
@@ -58,10 +70,20 @@ export const detalleVentas = pgTable(
     idVenta: integer('id_venta').notNull(),
     idProducto: integer('id_producto').notNull(),
     cantidad: integer('cantidad').notNull(),
-    precioUnitario: numeric('precio_unitario', { precision: 12, scale: 2, mode: 'number' }).notNull(),
+    precioUnitario: numeric('precio_unitario', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    }).notNull(),
     idOferta: integer('id_oferta'),
-    descuento: numeric('descuento', { precision: 12, scale: 2, mode: 'number' }).notNull().default(0),
-    subtotal: numeric('subtotal', { precision: 12, scale: 2, mode: 'number' }).notNull(),
+    descuento: numeric('descuento', { precision: 12, scale: 2, mode: 'number' })
+      .notNull()
+      .default(0),
+    subtotal: numeric('subtotal', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    }).notNull(),
   },
   (table) => [
     foreignKey({
@@ -90,7 +112,11 @@ export const pagos = pgTable(
   {
     idPago: serial('id_pago').primaryKey(),
     idVenta: integer('id_venta').notNull(),
-    monto: numeric('monto', { precision: 12, scale: 2, mode: 'number' }).notNull(),
+    monto: numeric('monto', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    }).notNull(),
     metodoPago: metodoPagoEnum('metodo_pago').notNull(),
     referencia: varchar('referencia', { length: 100 }),
     fechaPago: timestamp('fecha_pago', { mode: 'date' }).notNull().defaultNow(),

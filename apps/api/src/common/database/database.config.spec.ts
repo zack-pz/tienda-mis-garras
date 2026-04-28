@@ -1,4 +1,8 @@
-import { buildDatabaseUrl, buildPoolConfig, resolveDatabaseConfig } from './database.config';
+import {
+  buildDatabaseUrl,
+  buildPoolConfig,
+  resolveDatabaseConfig,
+} from './database.config';
 
 describe('database.config', () => {
   describe('resolveDatabaseConfig', () => {
@@ -79,7 +83,9 @@ describe('database.config', () => {
         connectionTimeoutMs: 5000,
       });
 
-      expect(url).toBe('postgresql://mistrapitos:mistrapitos@postgres:5432/mistrapitos');
+      expect(url).toBe(
+        'postgresql://mistrapitos:mistrapitos@postgres:5432/mistrapitos',
+      );
     });
   });
 

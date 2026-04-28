@@ -24,7 +24,9 @@ export const categorias = pgTable('categorias', {
   nombre: varchar('nombre', { length: 100 }).notNull().unique(),
   descripcion: text('descripcion'),
   activo: boolean('activo').notNull().default(true),
-  fechaCreacion: timestamp('fecha_creacion', { mode: 'date' }).notNull().defaultNow(),
+  fechaCreacion: timestamp('fecha_creacion', { mode: 'date' })
+    .notNull()
+    .defaultNow(),
 });
 
 export const productos = pgTable(
@@ -38,15 +40,25 @@ export const productos = pgTable(
     talla: varchar('talla', { length: 10 }),
     color: varchar('color', { length: 50 }),
     genero: generoEnum('genero'),
-    precioCompra: numeric('precio_compra', { precision: 12, scale: 2, mode: 'number' })
+    precioCompra: numeric('precio_compra', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    })
       .notNull()
       .default(0),
-    precioVenta: numeric('precio_venta', { precision: 12, scale: 2, mode: 'number' })
+    precioVenta: numeric('precio_venta', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    })
       .notNull()
       .default(0),
     imagen: pgBytea('imagen'),
     activo: boolean('activo').notNull().default(true),
-    fechaCreacion: timestamp('fecha_creacion', { mode: 'date' }).notNull().defaultNow(),
+    fechaCreacion: timestamp('fecha_creacion', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
     fechaModificacion: timestamp('fecha_modificacion', { mode: 'date' }),
   },
   (table) => [

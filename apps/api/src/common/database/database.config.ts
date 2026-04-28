@@ -17,7 +17,11 @@ const DEFAULT_POOL_MAX = 10;
 const DEFAULT_IDLE_TIMEOUT_MS = 30_000;
 const DEFAULT_CONNECTION_TIMEOUT_MS = 5_000;
 
-function parseNumber(value: string | undefined, fallback: number, variableName: string): number {
+function parseNumber(
+  value: string | undefined,
+  fallback: number,
+  variableName: string,
+): number {
   if (value === undefined || value.trim().length === 0) {
     return fallback;
   }
@@ -50,7 +54,11 @@ export function resolveDatabaseConfig(env: NodeJS.ProcessEnv): DatabaseConfig {
     user: env.DB_USER?.trim() || DEFAULT_DATABASE_USER,
     password: env.DB_PASSWORD?.trim() || DEFAULT_DATABASE_PASSWORD,
     ssl: parseBoolean(env.DB_SSL, false),
-    maxConnections: parseNumber(env.DB_POOL_MAX, DEFAULT_POOL_MAX, 'DB_POOL_MAX'),
+    maxConnections: parseNumber(
+      env.DB_POOL_MAX,
+      DEFAULT_POOL_MAX,
+      'DB_POOL_MAX',
+    ),
     idleTimeoutMs: parseNumber(
       env.DB_IDLE_TIMEOUT_MS,
       DEFAULT_IDLE_TIMEOUT_MS,

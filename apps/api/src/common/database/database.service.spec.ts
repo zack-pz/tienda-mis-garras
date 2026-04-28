@@ -31,8 +31,8 @@ describe('DatabaseService', () => {
 
     poolFactory = jest.fn((config: ConstructorParameters<typeof Pool>[0]) => {
       const pool = new Pool(config);
-      pool.query = queryMock as unknown as Pool['query'];
-      pool.end = endMock as unknown as Pool['end'];
+      pool.query = queryMock;
+      pool.end = endMock;
       return pool;
     }) as jest.MockedFunction<DatabasePoolFactory>;
 

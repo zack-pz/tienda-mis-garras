@@ -15,7 +15,9 @@ export const roles = pgTable('roles', {
   nombre: varchar('nombre', { length: 50 }).notNull().unique(),
   descripcion: text('descripcion'),
   activo: boolean('activo').notNull().default(true),
-  fechaCreacion: timestamp('fecha_creacion', { mode: 'date' }).notNull().defaultNow(),
+  fechaCreacion: timestamp('fecha_creacion', { mode: 'date' })
+    .notNull()
+    .defaultNow(),
 });
 
 export const usuarios = pgTable(
@@ -28,7 +30,9 @@ export const usuarios = pgTable(
     contrasena: text('contrasena').notNull(),
     idRol: integer('id_rol').notNull(),
     activo: boolean('activo').notNull().default(true),
-    fechaCreacion: timestamp('fecha_creacion', { mode: 'date' }).notNull().defaultNow(),
+    fechaCreacion: timestamp('fecha_creacion', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
     ultimoAcceso: timestamp('ultimo_acceso', { mode: 'date' }),
   },
   (table) => [

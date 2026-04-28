@@ -24,13 +24,18 @@ export const ofertas = pgTable(
     nombre: varchar('nombre', { length: 150 }).notNull(),
     descripcion: text('descripcion'),
     tipoDescuento: tipoDescuentoEnum('tipo_descuento').notNull(),
-    valorDescuento: numeric('valor_descuento', { precision: 12, scale: 2, mode: 'number' })
-      .notNull(),
+    valorDescuento: numeric('valor_descuento', {
+      precision: 12,
+      scale: 2,
+      mode: 'number',
+    }).notNull(),
     fechaInicio: date('fecha_inicio', { mode: 'string' }).notNull(),
     fechaFin: date('fecha_fin', { mode: 'string' }).notNull(),
     activo: boolean('activo').notNull().default(true),
     idUsuarioCreo: integer('id_usuario_creo').notNull(),
-    fechaCreacion: timestamp('fecha_creacion', { mode: 'date' }).notNull().defaultNow(),
+    fechaCreacion: timestamp('fecha_creacion', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
   },
   (table) => [
     foreignKey({
@@ -51,7 +56,10 @@ export const ofertasProductos = pgTable(
     idProducto: integer('id_producto').notNull(),
   },
   (table) => [
-    unique('ofertas_productos_id_oferta_id_producto_unique').on(table.idOferta, table.idProducto),
+    unique('ofertas_productos_id_oferta_id_producto_unique').on(
+      table.idOferta,
+      table.idProducto,
+    ),
     foreignKey({
       columns: [table.idOferta],
       foreignColumns: [ofertas.idOferta],

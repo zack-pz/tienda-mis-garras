@@ -13,7 +13,8 @@ import { DatabaseService } from './database.service';
     },
     {
       provide: DATABASE_POOL_FACTORY,
-      useValue: (config: ConstructorParameters<typeof Pool>[0]) => new Pool(config),
+      useValue: (config: ConstructorParameters<typeof Pool>[0]) =>
+        new Pool(config),
     },
     DatabaseService,
   ],

@@ -1,4 +1,12 @@
-import { boolean, index, pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
+import {
+  boolean,
+  index,
+  pgTable,
+  serial,
+  text,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core';
 
 export const clientes = pgTable(
   'clientes',
@@ -11,7 +19,9 @@ export const clientes = pgTable(
     direccion: text('direccion'),
     notas: text('notas'),
     activo: boolean('activo').notNull().default(true),
-    fechaRegistro: timestamp('fecha_registro', { mode: 'date' }).notNull().defaultNow(),
+    fechaRegistro: timestamp('fecha_registro', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
   },
   (table) => [index('idx_clientes_nombre').on(table.nombre, table.apellido)],
 );

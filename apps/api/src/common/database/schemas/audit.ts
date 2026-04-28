@@ -19,7 +19,10 @@ export const logAuditoria = pgTable(
     accion: accionAuditoriaEnum('accion').notNull(),
     tablaAfectada: varchar('tabla_afectada', { length: 100 }),
     registroId: integer('registro_id'),
-    datosAnteriores: jsonb('datos_anteriores').$type<Record<string, unknown> | null>(),
+    datosAnteriores: jsonb('datos_anteriores').$type<Record<
+      string,
+      unknown
+    > | null>(),
     datosNuevos: jsonb('datos_nuevos').$type<Record<string, unknown> | null>(),
     ipLocal: varchar('ip_local', { length: 45 }),
     fecha: timestamp('fecha', { mode: 'date' }).notNull().defaultNow(),
