@@ -15,7 +15,8 @@ const config = {
 			dir: '../..'
 		},
 		alias: {
-			'@garras/shared-types': '../../libs/shared-types/src/index.ts'
+			'@garras/shared-types': '../../libs/shared-types/src/index.ts',
+			'@garras/api-contracts': '../../libs/api/contracts/index.ts'
 		}
 	}
 };
