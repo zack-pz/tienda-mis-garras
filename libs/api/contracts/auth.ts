@@ -3,16 +3,21 @@ import type { ApiResponse } from './responses';
 
 export type AuthUser = {
   id: UserId;
-  email: string;
+  nombreUsuario: string;
   role: Role;
 };
 
 export type LoginRequest = {
-  email: string;
-  password: string;
+  nombreUsuario: string;
+  contrasena: string;
 };
 
 export type LoginResponse = ApiResponse<{
-  accessToken: string;
+  expiresAt: string;
+  user: AuthUser;
+}>;
+
+export type SessionResponse = ApiResponse<{
+  expiresAt: string;
   user: AuthUser;
 }>;

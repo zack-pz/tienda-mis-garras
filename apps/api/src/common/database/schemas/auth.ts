@@ -64,3 +64,25 @@ export const permisos = pgTable(
     }),
   ],
 );
+
+export const authSessions = pgTable(
+  'auth_sessions',
+  {
+    id: text('id').primaryKey(),
+    userId: integer('user_id').notNull(),
+    lastActivityAt: timestamp('last_activity_at', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
+    expiresAt: timestamp('expires_at', { mode: 'date' }).notNull(),
+    revokedAt: timestamp('revoked_at', { mode: 'date' }),
+  },
+  (table) => [
+    foreignKey({
+      columns: [table.userId],
+      foreignColumns: [usuarios.idUsuario],
+      name: 'fk_auth_sessions_user',
+    }),
+  ],
+);
+
+export type RoleName = (typeof roles.$inferSelect)['nombre'];
