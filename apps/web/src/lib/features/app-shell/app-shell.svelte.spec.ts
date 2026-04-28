@@ -6,7 +6,7 @@ import AppShell from './app-shell.svelte';
 describe('app-shell', () => {
 	it('renders shell and role-based navigation', async () => {
 		render(AppShell, {
-			role: 'staff'
+			role: 'Vendedor'
 		});
 
 		await expect.element(page.getByRole('heading', { level: 2 })).toHaveTextContent('Mis Garras');

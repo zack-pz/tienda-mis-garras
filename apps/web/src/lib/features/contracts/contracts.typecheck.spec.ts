@@ -3,7 +3,8 @@ import type {
 	ApiErrorResponse,
 	ApiSuccessResponse,
 	ListUsersResponse,
-	LoginResponse
+	LoginResponse,
+	SessionResponse
 } from '@garras/api-contracts';
 
 type LocalBrokenLoginResponse = {
@@ -47,11 +48,13 @@ describe('shared contracts type-compatibility', () => {
 		> = true;
 
 		const loginErrorIsShared: Assert<IsAssignable<ApiErrorResponse, LoginResponse>> = true;
+		const sessionErrorIsShared: Assert<IsAssignable<ApiErrorResponse, SessionResponse>> = true;
 		const usersErrorIsShared: Assert<IsAssignable<ApiErrorResponse, ListUsersResponse>> = true;
 
 		void loginSuccessIsShared;
 		void usersSuccessIsShared;
 		void loginErrorIsShared;
+		void sessionErrorIsShared;
 		void usersErrorIsShared;
 		expect(true).toBe(true);
 	});

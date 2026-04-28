@@ -6,16 +6,20 @@ export type NavigationItem = {
 };
 
 const NAVIGATION_BY_ROLE: Record<Role, NavigationItem[]> = {
-	admin: [
+	Administrador: [
 		{ title: 'Dashboard', href: '/dashboard' },
 		{ title: 'Usuarios', href: '/users' },
 		{ title: 'Inventario', href: '/inventory' }
 	],
-	staff: [
+	Vendedor: [
 		{ title: 'Dashboard', href: '/dashboard' },
 		{ title: 'Inventario', href: '/inventory' }
 	],
-	viewer: [{ title: 'Dashboard', href: '/dashboard' }]
+	Almacenista: [
+		{ title: 'Dashboard', href: '/dashboard' },
+		{ title: 'Inventario', href: '/inventory' },
+		{ title: 'Proveedores', href: '/suppliers' }
+	]
 };
 
 const SAFE_FALLBACK: NavigationItem[] = [{ title: 'Dashboard', href: '/dashboard' }];

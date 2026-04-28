@@ -3,7 +3,7 @@ import { getNavigationForRole } from './navigation.model';
 
 describe('navigation model', () => {
 	it('shows role-specific items', () => {
-		const adminItems = getNavigationForRole('admin');
+		const adminItems = getNavigationForRole('Administrador');
 
 		expect(adminItems.map((item) => item.href)).toEqual([
 			'/dashboard',

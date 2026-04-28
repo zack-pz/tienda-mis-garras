@@ -2,9 +2,9 @@
 	import '../layout.css';
 	import AppShell from '$lib/features/app-shell/app-shell.svelte';
 
-	let { children } = $props();
+	let { children, data } = $props();
 </script>
 
-<AppShell role="staff">
+<AppShell role={data.role}>
 	{@render children()}
 </AppShell>
