@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "moduleResolution": "bundler",
+    "target": "ES2023"
+  },
+  "include": ["src"]
+}

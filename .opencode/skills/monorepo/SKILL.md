@@ -61,7 +61,7 @@ La carpeta `libs/` en la raíz existe para alojar **código transversal y contra
 Según `libs/README.md`, el foco actual está en:
 
 - `libs/shared/types`
-- `libs/api/contracts`
+- `libs/api-contracts`
 
 Además existen carpetas preparadas para crecer:
 

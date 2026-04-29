@@ -53,17 +53,17 @@ Una historia se considera terminada cuando:
 
 | Dominio | API (`apps/api/src/modules`) | Web (`apps/web/src/lib/features`) | Rutas sugeridas (`apps/web/src/routes`) | Compartido (`libs/`) |
 | :--- | :--- | :--- | :--- | :--- |
-| Autenticación | `auth` | `auth` | `/login` | `libs/api/contracts/auth`, `libs/shared/types/auth` |
-| Usuarios | `users` | `users` | `/admin/usuarios` | `libs/api/contracts/users` |
-| Catálogo | `catalog` | `catalog` | `/inventario/productos`, `/inventario/categorias` | `libs/api/contracts/catalog` |
-| Inventario | `inventory` | `inventory` | `/inventario/movimientos`, `/inventario/stock` | `libs/api/contracts/inventory` |
-| Ofertas | `offers` | `offers` | `/inventario/ofertas` | `libs/api/contracts/offers` |
-| Clientes | `customers` | `customers` | `/ventas/clientes` | `libs/api/contracts/customers` |
-| Ventas | `sales` | `sales` | `/ventas/nueva`, `/ventas/historial` | `libs/api/contracts/sales` |
-| Proveedores | `suppliers` | `suppliers` | `/compras/proveedores` | `libs/api/contracts/suppliers` |
-| Órdenes de compra | `purchase-orders` | `purchase-orders` | `/compras/ordenes` | `libs/api/contracts/purchase-orders` |
-| Auditoría | `audit` | `audit` | `/admin/auditoria` | `libs/api/contracts/audit` |
-| Reportes | `reports` | `reports` | `/reportes` | `libs/api/contracts/reports` |
+| Autenticación | `auth` | `auth` | `/login` | `libs/api-contracts/src/auth`, `libs/shared-types` |
+| Usuarios | `users` | `users` | `/admin/usuarios` | `libs/api-contracts/src/users` |
+| Catálogo | `catalog` | `catalog` | `/inventario/productos`, `/inventario/categorias` | `libs/api-contracts/src/catalog` |
+| Inventario | `inventory` | `inventory` | `/inventario/movimientos`, `/inventario/stock` | `libs/api-contracts/src/inventory` |
+| Ofertas | `offers` | `offers` | `/inventario/ofertas` | `libs/api-contracts/src/offers` |
+| Clientes | `customers` | `customers` | `/ventas/clientes` | `libs/api-contracts/src/customers` |
+| Ventas | `sales` | `sales` | `/ventas/nueva`, `/ventas/historial` | `libs/api-contracts/src/sales` |
+| Proveedores | `suppliers` | `suppliers` | `/compras/proveedores` | `libs/api-contracts/src/suppliers` |
+| Órdenes de compra | `purchase-orders` | `purchase-orders` | `/compras/ordenes` | `libs/api-contracts/src/purchase-orders` |
+| Auditoría | `audit` | `audit` | `/admin/auditoria` | `libs/api-contracts/src/audit` |
+| Reportes | `reports` | `reports` | `/reportes` | `libs/api-contracts/src/reports` |
 
 > Nota: hoy `libs/` no está formalizado como workspace package independiente. Por ahora debe verse como carpeta de código compartido del repo, no como package aislado.
 
@@ -159,7 +159,7 @@ Una historia se considera terminada cuando:
 
 **Criterios de aceptación:**
 
-- Se definen DTOs o contratos mínimos en `libs/api/contracts`.
+- Se definen DTOs o contratos mínimos en `libs/api-contracts/src`.
 - Se definen tipos comunes en `libs/shared/types` cuando aplique.
 - Web consume esos contratos como fuente de verdad.
 
@@ -602,7 +602,7 @@ Estos ítems no necesariamente se expresan como historias de negocio, pero son p
 
 ### 6.3 Compartido
 
-- consolidar contratos request/response por dominio en `libs/api/contracts`;
+- consolidar contratos request/response por dominio en `libs/api-contracts/src`;
 - consolidar tipos transversales en `libs/shared/types`;
 - evitar lógica de negocio en `libs/` mientras no exista necesidad real cross-app.
 
