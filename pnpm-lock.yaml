@@ -14,6 +14,12 @@ importers:
 
   apps/api:
     dependencies:
+      '@garras/api-contracts':
+        specifier: workspace:*
+        version: link:../../libs/api-contracts
+      '@garras/shared-types':
+        specifier: workspace:*
+        version: link:../../libs/shared-types
       '@nestjs/common':
         specifier: ^11.0.1
         version: 11.1.19(class-transformer@0.5.1)(class-validator@0.14.4)(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -117,9 +123,6 @@ importers:
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@types/node@24.12.2)(typescript@5.9.3)
-      tsconfig-paths:
-        specifier: ^4.2.0
-        version: 4.2.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -132,6 +135,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@garras/api-contracts':
+        specifier: workspace:*
+        version: link:../../libs/api-contracts
+      '@garras/shared-types':
+        specifier: workspace:*
+        version: link:../../libs/shared-types
       '@tanstack/svelte-form':
         specifier: ^1.29.1
         version: 1.29.1(svelte@5.55.5(@typescript-eslint/types@8.59.0))
@@ -239,9 +248,21 @@ importers:
         specifier: ^2.1.0
         version: 2.1.1(svelte@5.55.5(@typescript-eslint/types@8.59.0))(vitest@4.1.5)
 
-  libs/api-contracts: {}
+  libs/api-contracts:
+    dependencies:
+      '@garras/shared-types':
+        specifier: workspace:*
+        version: link:../shared-types
+    devDependencies:
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
-  libs/shared-types: {}
+  libs/shared-types:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
 
 packages:
 

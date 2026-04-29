@@ -4,6 +4,13 @@
 	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
+		"predev": "pnpm --dir ../.. build:shared",
+		"preserve": "pnpm --dir ../.. build:shared",
+		"prebuild": "pnpm --dir ../.. build:shared",
+		"precheck": "pnpm --dir ../.. build:shared",
+		"pretest": "pnpm --dir ../.. build:shared",
+		"pretest:unit": "pnpm --dir ../.. build:shared",
+		"pretest:e2e": "pnpm --dir ../.. build:shared",
 		"dev": "vite dev",
 		"serve": "vite dev",
 		"build": "vite build",
@@ -52,6 +59,8 @@
 		"vitest-browser-svelte": "^2.1.0"
 	},
 	"dependencies": {
+		"@garras/api-contracts": "workspace:*",
+		"@garras/shared-types": "workspace:*",
 		"@tanstack/svelte-form": "^1.29.1",
 		"@tanstack/svelte-query": "^6.1.24",
 		"zod": "^4.3.6"
