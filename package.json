@@ -8,6 +8,8 @@
     "build:api-contracts": "pnpm --filter @garras/api-contracts run build",
     "build:shared": "pnpm build:shared-types && pnpm build:api-contracts",
     "dev": "NX_DAEMON=false nx run-many -t serve -p web,api --parallel=2",
+    "web":"NX_DAEMON=false nx run web:serve",
+    "api":"NX_DAEMON=false nx run api:serve",
     "serve": "NX_DAEMON=false nx run-many -t serve -p web,api --parallel=2",
     "nx": "nx",
     "graph": "nx graph",
