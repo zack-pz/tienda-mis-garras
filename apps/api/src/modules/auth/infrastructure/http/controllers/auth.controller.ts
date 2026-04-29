@@ -19,7 +19,7 @@ import {
 import type { LoginRequest, LoginResponse, SessionResponse } from '@garras/api-contracts';
 import type { Request, Response } from 'express';
 import { LoginLocalUseCase } from '../../../application/use-cases/login-local.use-case';
-import { SessionAuthGuard } from '../guards/session-auth.guard';
+import { SessionAuthGuard, type SessionRequest } from '../guards/session-auth.guard';
 import { DrizzleAuthSessionRepository } from '../../persistence/drizzle/repositories/drizzle-auth-session.repository';
 
 function readSessionId(request: Request): string | undefined {
@@ -65,12 +65,12 @@ export class AuthController {
   @ApiOperation({ summary: 'Resuelve sesión activa y renueva expiración por inactividad (15m)' })
   @ApiOkResponse({ description: 'Sesión activa' })
   @ApiUnauthorizedResponse({ description: 'SESSION_EXPIRED' })
-  async session(@Req() request: Request & { authSession: NonNullable<any> }): Promise<SessionResponse> {
+  async session(@Req() request: SessionRequest): Promise<SessionResponse> {
     return {
       ok: true,
       data: {
-        user: request.authSession.user,
-        expiresAt: request.authSession.expiresAt.toISOString(),
+        user: request.authSession!.user,
+        expiresAt: request.authSession!.expiresAt.toISOString(),
       },
     };
   }

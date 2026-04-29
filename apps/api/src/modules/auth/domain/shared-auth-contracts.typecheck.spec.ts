@@ -1,4 +1,3 @@
-import { describe, expect, it } from '@jest/globals';
 import type { LoginRequest, LoginResponse, SessionResponse } from '@garras/api-contracts';
 
 type LocalBrokenLoginResponse = {

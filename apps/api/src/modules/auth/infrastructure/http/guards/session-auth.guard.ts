@@ -5,13 +5,11 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import type { Request } from 'express';
+import type { ActiveAuthSession } from '../../../domain/auth-session';
 import { DrizzleAuthSessionRepository } from '../../persistence/drizzle/repositories/drizzle-auth-session.repository';
 
-type SessionRequest = Request & {
-  authSession?: {
-    user: { id: string; nombreUsuario: string; role: 'Administrador' | 'Vendedor' | 'Almacenista' };
-    expiresAt: Date;
-  };
+export type SessionRequest = Request & {
+  authSession?: ActiveAuthSession;
 };
 
 @Injectable()

@@ -22,7 +22,7 @@
     "strictBindCallApply": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@garras/*": ["../../libs/*/src/index.ts"]
+      "@garras/*": ["../../libs/*/src/index"]
     }
   },
   "ts-node": {

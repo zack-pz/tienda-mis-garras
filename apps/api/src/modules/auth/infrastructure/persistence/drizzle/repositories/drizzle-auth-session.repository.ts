@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
+import { asUserId } from '@garras/shared-types';
 import { and, eq, gt, isNull } from 'drizzle-orm';
 import { randomUUID } from 'node:crypto';
 import { DatabaseService } from '../../../../../../common/database/database.service';
 import { authSessions, roles, usuarios } from '../../../../../../common/database/schemas/auth';
+import type { ActiveAuthSession } from '../../../../domain/auth-session';
 import { createInactivityExpiry } from '../../../../domain/session-policy';
 
 @Injectable()
@@ -25,10 +27,7 @@ export class DrizzleAuthSessionRepository {
     return { id: sessionId, expiresAt };
   }
 
-  async resolveSession(sessionId: string): Promise<{
-    user: { id: string; nombreUsuario: string; role: 'Administrador' | 'Vendedor' | 'Almacenista' };
-    expiresAt: Date;
-  } | null> {
+  async resolveSession(sessionId: string): Promise<ActiveAuthSession | null> {
     const now = new Date();
     const result = await this.database.client
       .select({
@@ -60,7 +59,7 @@ export class DrizzleAuthSessionRepository {
 
     return {
       user: {
-        id: String(record.id),
+        id: asUserId(String(record.id)),
         nombreUsuario: record.nombreUsuario,
         role: record.role as 'Administrador' | 'Vendedor' | 'Almacenista',
       },

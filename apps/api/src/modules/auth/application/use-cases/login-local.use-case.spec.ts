@@ -1,5 +1,4 @@
 import { UnauthorizedException } from '@nestjs/common';
-import { describe, expect, it, jest } from '@jest/globals';
 import { LoginLocalUseCase } from './login-local.use-case';
 import { hashPassword } from '../../domain/password-hasher';
 

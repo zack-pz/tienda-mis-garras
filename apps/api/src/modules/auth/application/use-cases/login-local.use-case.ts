@@ -1,5 +1,6 @@
 import { UnauthorizedException } from '@nestjs/common';
 import type { LoginRequest, LoginResponse } from '@garras/api-contracts';
+import { asUserId } from '@garras/shared-types';
 import { verifyPassword } from '../../domain/password-hasher';
 
 type AuthUserRecord = {
@@ -45,7 +46,7 @@ export class LoginLocalUseCase {
         data: {
           expiresAt: session.expiresAt.toISOString(),
           user: {
-            id: String(user.id),
+            id: asUserId(String(user.id)),
             nombreUsuario: user.nombreUsuario,
             role: user.role,
           },

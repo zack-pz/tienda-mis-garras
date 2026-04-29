@@ -9,6 +9,17 @@ import { DrizzleAuthSessionRepository } from '../src/modules/auth/infrastructure
 import { DrizzleAuthUserRepository } from '../src/modules/auth/infrastructure/persistence/drizzle/repositories/drizzle-auth-user.repository';
 import { configurePlatform } from '../src/common/http/platform-bootstrap';
 
+function readSidCookie(setCookieHeader: string | string[] | undefined): string {
+	const cookies = Array.isArray(setCookieHeader) ? setCookieHeader : setCookieHeader ? [setCookieHeader] : [];
+	const sidCookie = cookies.find((cookie) => cookie.startsWith('sid='));
+
+	if (!sidCookie) {
+		throw new Error('Expected sid cookie in Set-Cookie header');
+	}
+
+	return sidCookie;
+}
+
 describe('Auth sessions (e2e)', () => {
 	let app: INestApplication<App>;
 
@@ -23,7 +34,7 @@ describe('Auth sessions (e2e)', () => {
 			if (!session || session.revoked) return null;
 			if (sessionId === 'expired-session') return null;
 			return {
-				user: { id: '1', nombreUsuario: 'admin', role: session.role },
+				user: { id: '1' as import('@garras/shared-types').UserId, nombreUsuario: 'admin', role: session.role },
 				expiresAt: new Date(Date.now() + 15 * 60_000)
 			};
 		}),
@@ -47,7 +58,7 @@ describe('Auth sessions (e2e)', () => {
 					ok: true,
 					data: {
 						expiresAt: new Date(Date.now() + 15 * 60_000).toISOString(),
-						user: { id: '1', nombreUsuario: 'admin', role: 'Administrador' }
+						user: { id: '1' as import('@garras/shared-types').UserId, nombreUsuario: 'admin', role: 'Administrador' }
 					}
 				}
 			};
@@ -83,9 +94,7 @@ describe('Auth sessions (e2e)', () => {
 			.send({ nombreUsuario: 'admin', contrasena: 'password' })
 			.expect(200);
 
-		const sidCookie = loginResponse.headers['set-cookie']?.find((cookie: string) =>
-			cookie.startsWith('sid='),
-		);
+		const sidCookie = readSidCookie(loginResponse.headers['set-cookie']);
 		expect(sidCookie).toContain('HttpOnly');
 
 		await request(app.getHttpServer()).get('/auth/session').set('Cookie', sidCookie).expect(200);
@@ -122,9 +131,7 @@ describe('Auth sessions (e2e)', () => {
 			.send({ nombreUsuario: 'admin', contrasena: 'password' })
 			.expect(200);
 
-		const sidCookie = loginResponse.headers['set-cookie']?.find((cookie: string) =>
-			cookie.startsWith('sid='),
-		);
+		const sidCookie = readSidCookie(loginResponse.headers['set-cookie']);
 
 		const first = await request(app.getHttpServer())
 			.get('/auth/session')

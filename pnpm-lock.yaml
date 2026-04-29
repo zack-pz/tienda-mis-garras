@@ -239,6 +239,8 @@ importers:
         specifier: ^2.1.0
         version: 2.1.1(svelte@5.55.5(@typescript-eslint/types@8.59.0))(vitest@4.1.5)
 
+  libs/api-contracts: {}
+
   libs/shared-types: {}
 
 packages:
