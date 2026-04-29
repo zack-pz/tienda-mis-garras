@@ -1,7 +1,8 @@
+import { resolveApiUrl } from '$lib/shared/utils/resolve.api';
 import type { LoginRequest, LoginResponse, SessionResponse } from '@garras/api-contracts';
 
 export async function getSession(fetcher: typeof fetch): Promise<SessionResponse> {
-  const response = await fetcher('/auth/session', {
+  const response = await fetcher(resolveApiUrl('/auth/session'), {
     method: 'GET',
     credentials: 'include'
   });
@@ -14,7 +15,7 @@ export async function getSession(fetcher: typeof fetch): Promise<SessionResponse
 }
 
 export async function login(fetcher: typeof fetch, payload: LoginRequest): Promise<LoginResponse> {
-  const response = await fetcher('/auth/login', {
+  const response = await fetcher(resolveApiUrl('/auth/login'), {
     method: 'POST',
     credentials: 'include',
     headers: { 'content-type': 'application/json' },
